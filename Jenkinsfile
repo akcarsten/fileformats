@@ -41,12 +41,10 @@ pipeline {
         stage('Static code metrics') {
             steps {
                 echo "Code Coverage"
-                sh  ''' conda create --yes -n ${BUILD_TAG} python
-                        source activate ${BUILD_TAG}
-                        pip install -r requirements.txt
-                        coverage run main.py 1 1 2 3
-                        python -m coverage xml -o ./reports/coverage.xml
-                    '''
+                sh '''source activate ${BUILD_TAG}
+                      coverage run main.py 1 1 2 3
+                      python -m coverage xml -o ./reports/coverage.xml
+                   '''
             }
             post{
                 always{
