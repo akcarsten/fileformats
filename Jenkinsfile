@@ -38,7 +38,7 @@ pipeline {
                     '''
                 echo "Style check"
                 sh  ''' source activate ${BUILD_TAG}
-                        pylint irisvmpy || true
+                        pylint main.py || true
                     '''
             }
         }
