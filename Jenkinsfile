@@ -36,6 +36,10 @@ pipeline {
                       which pip
                       which python
                     '''
+                echo "Style check"
+                sh  ''' source activate ${BUILD_TAG}
+                        pylint irisvmpy || true
+                    '''
             }
         }
     }
