@@ -5,9 +5,9 @@ Radon==2.1.1
 coverage==4.4.2
 
 alabaster==0.7.12
-anaconda-client==1.7.2
-anaconda-navigator==1.10.0
-anaconda-project==0.8.3
+#anaconda-client==1.7.2
+#anaconda-navigator==1.10.0
+#anaconda-project==0.8.3
 argh==0.26.2
 astropy==4.0.2
 async-generator==1.10
