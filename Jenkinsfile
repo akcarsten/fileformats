@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM('*/5 * * * *')
+        pollSCM('*/5 * * * 1-5')
     }
     options {
         skipDefaultCheckout(true)
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build environment') {
             steps {
-                sh '''conda create --yes -n ${BUILD_TAG} python=3.8
+                sh '''conda create --yes -n ${BUILD_TAG} python
                       source activate ${BUILD_TAG} 
                       pip install -r requirements.txt
                     '''
@@ -38,25 +38,12 @@ pipeline {
                     '''
             }
         }
-        stage('Static code metrics') {
-            steps {
-                echo "Code Coverage"
-                sh '''source activate ${BUILD_TAG}
-                      coverage run main.py 1 1 2 3
-                      python -m coverage xml -o ./reports/coverage.xml
-                   '''
-            }
-            post{
-
-                }
-            }
-        }
     }
     post {
         always {
             sh 'conda remove --yes -n ${BUILD_TAG} --all'
         }
-        failure {
+        filure {
             echo "Send e-mail, when failed"
         }
     }
