@@ -44,7 +44,7 @@ pipeline {
             
             post{
                 always{
-                    junit '**/nosetests.xml'
+                    junit 'reports/coverage.xml'
                     step([$class: 'CoberturaPublisher',
                                    autoUpdateHealth: false,
                                    autoUpdateStability: false,
