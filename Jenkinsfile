@@ -44,7 +44,6 @@ pipeline {
             
             post{
                 always{
-                    junit 'reports/coverage.xml'
                     cobertura coberturaReportFile: 'reports/coverage.xml'
                 }
             }
