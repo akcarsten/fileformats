@@ -42,16 +42,7 @@ pipeline {
                     '''
             }
         }
-    }
-    post {
-        always {
-            sh 'conda remove --yes -n ${BUILD_TAG} --all'
-        }
-        failure {
-            echo "Send e-mail, when failed"
-        }
-    }
-    
+
     stage('Unit tests') {
           steps {
               sh  ''' source activate ${BUILD_TAG}
@@ -65,5 +56,16 @@ pipeline {
               }
           }
     }
+        
+            }
+    post {
+        always {
+            sh 'conda remove --yes -n ${BUILD_TAG} --all'
+        }
+        failure {
+            echo "Send e-mail, when failed"
+        }
+    }
+    
 
 }
