@@ -51,4 +51,19 @@ pipeline {
             echo "Send e-mail, when failed"
         }
     }
+    
+      stage('Unit tests') {
+            steps {
+                sh  ''' source activate ${BUILD_TAG}
+                        python -m unittest --verbose --junit-xml reports/unit_tests.xml
+                    '''
+            }
+            post {
+                always {
+                    // Archive unit tests for the future
+                    junit allowEmptyResults: true, testResults: 'reports/unit_tests.xml'
+                }
+            }
+        }
+
 }
