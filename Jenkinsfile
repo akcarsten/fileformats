@@ -31,10 +31,10 @@ pipeline {
         }
         stage('Test environment') {
             steps {
-                sh '''source activate ${BUILD_TAG} 
-                      pip list
-                      which pip
-                      which python
+                echo "Test coverage"
+                sh  ''' source activate ${BUILD_TAG}
+                        coverage run irisvmpy/iris.py 1 1 2 3
+                        python -m coverage xml -o reports/coverage.xml
                     '''
                 echo "Style check"
                 sh  ''' source activate ${BUILD_TAG}
