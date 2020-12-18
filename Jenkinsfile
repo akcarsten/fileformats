@@ -51,7 +51,9 @@ pipeline {
         }
         
        stage ("Extract test results") {
-           cobertura coberturaReportFile: 'path-to/coverage.xml'
+           steps {
+               cobertura coberturaReportFile: 'reports/coverage.xml'
+           }
        }
 
     stage('Unit tests') {
