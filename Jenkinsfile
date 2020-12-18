@@ -41,13 +41,6 @@ pipeline {
                         pylint main.py || true
                     '''
             }
-            
-            post{
-                always{
-                    cobertura coberturaReportFile: 'reports/coverage.xml'
-                }
-            }
-            
         }
 
     stage('Unit tests') {
