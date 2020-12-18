@@ -46,7 +46,7 @@ pipeline {
     stage('Unit tests') {
           steps {
               sh  ''' source activate ${BUILD_TAG}
-                      py.test --junitxml reports/unit_tests.xml main.py 
+                      py.test --junitxml reports/unit_tests.xml test_main.py 
                   '''
           }
           post {
