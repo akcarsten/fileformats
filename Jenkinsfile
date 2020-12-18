@@ -45,16 +45,11 @@ pipeline {
             post{
                 always{
                     junit 'reports/coverage.xml'
+                    cobertura coberturaReportFile: 'reports/coverage.xml'
                 }
             }
             
         }
-        
-       stage ("Extract test results") {
-           steps {
-               cobertura coberturaReportFile: 'reports/coverage.xml'
-           }
-       }
 
     stage('Unit tests') {
           steps {
