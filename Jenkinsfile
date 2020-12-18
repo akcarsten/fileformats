@@ -45,21 +45,14 @@ pipeline {
             post{
                 always{
                     junit 'reports/coverage.xml'
-                    step([$class: 'CoberturaPublisher',
-                                   autoUpdateHealth: false,
-                                   autoUpdateStability: false,
-                                   coberturaReportFile: 'reports/coverage.xml',
-                                   failNoReports: false,
-                                   failUnhealthy: false,
-                                   failUnstable: false,
-                                   maxNumberOfBuilds: 10,
-                                   onlyStable: false,
-                                   sourceEncoding: 'ASCII',
-                                   zoomCoverageChart: false])
                 }
             }
             
         }
+        
+       stage ("Extract test results") {
+           cobertura coberturaReportFile: 'path-to/coverage.xml'
+       }
 
     stage('Unit tests') {
           steps {
