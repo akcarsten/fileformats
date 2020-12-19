@@ -3,4 +3,5 @@ Radon==2.1.1
 coverage==4.4.2
 datasette-pytables==2.0.1
 pandas==1.1.5
+fastparquet==0.4.1
 pytest
