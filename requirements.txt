@@ -1,9 +1,5 @@
 pylint==1.8.1
 Radon==2.1.1
-Radon==2.1.1
 coverage==4.4.2
-coverage==4.4.2
-datasette=pytables==2.0.1
 datasette-pytables==2.0.1
-pytest
 pytest
