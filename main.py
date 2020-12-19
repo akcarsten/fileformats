@@ -38,13 +38,12 @@ print("Size string: " + str(os.path.getsize(output_file) / 1000000) + "MB")
 # Save as HDF5
 output_file = output_file_base + 'hdf5'
 df = pd.DataFrame(dummy_data)
-df.to_hdf(output_file, key='df', mode='w')
+df.to_hdf(output_file, key='df', mode='w', format='table')
 print("Size HDF5: " + str(os.path.getsize(output_file) / 1000000) + "MB")
 
-'''
+
 # Save as Parquet
 output_file = output_file_base + 'parquet'
 df = pd.DataFrame(dummy_data)
 df.to_parquet(output_file, compression='GZIP')
 print("Size Parquet: " + str(os.path.getsize(output_file) / 1000000) + "MB")
-'''
