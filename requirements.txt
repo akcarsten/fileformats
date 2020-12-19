@@ -35,7 +35,7 @@ mo-future==3.89.20246
 moz-sql-parser==3.32.20026
 numba
 numexpr==2.7.1
-numpy==1.19.4
+numpy
 packaging==20.8
 pandas==1.1.5
 Pint==0.16.1
