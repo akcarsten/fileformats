@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM('*/5 * * * 1-5')
+        cron('*/5 * * * *')
     }
     options {
         skipDefaultCheckout(true)
