@@ -1,9 +1,10 @@
 import numpy as np
 import pandas as pd
+import shutil
 import os
 
-
-output_file_base = 'size_test.'
+output_folder = './tmp'
+output_file_base = '{}/size_test.'.format(output_folder)
 
 data_format = np.dtype([('time', np.uint64),
                         ('setPressure', np.uint32),
@@ -15,6 +16,9 @@ data_format = np.dtype([('time', np.uint64),
                         ('dutAdcPressure', np.float64),
                         ('dutAdcTemperature', np.float64)
                         ])
+
+if os.path.isdir(output_folder) is False:
+    os.mkdir(output_folder)
 
 dummy_data = np.recarray((100000,), dtype=data_format)
 
@@ -47,3 +51,5 @@ output_file = output_file_base + 'parquet'
 df = pd.DataFrame(dummy_data)
 df.to_parquet(output_file, compression='GZIP')
 print("Size Parquet: " + str(os.path.getsize(output_file) / 1000000) + "MB")
+
+shutil.rmtree(output_folder)
