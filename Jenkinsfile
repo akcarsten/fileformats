@@ -12,8 +12,8 @@ pipeline {
     }
     environment {
       PATH="/var/lib/jenkins/miniconda3/bin:$PATH"
-      CONFLUENCE_PAGE_CREDS = credentials('confluence-creds')
-      PAGE_ID = credentials('confluence-page-id')
+      // CONFLUENCE_PAGE_CREDS = credentials('confluence-creds')
+      // PAGE_ID = credentials('confluence-page-id')
     }
 
     stages {
