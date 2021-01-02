@@ -42,6 +42,12 @@ pipeline {
                 sh  ''' source activate ${BUILD_TAG}
                         pylint main.py || true
                     '''
+            }            
+            post {
+                always {
+                    // Archive coverage results
+                    junit allowEmptyResults: true, testResults: 'reports/coverage.xml'
+                }
             }
         }
 
